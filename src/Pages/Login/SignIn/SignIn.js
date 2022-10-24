@@ -1,11 +1,12 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
-    const { signInWithSocialMedia } = useContext(AuthContext);
+    const { signIn, signInWithSocialMedia } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -24,6 +25,22 @@ const SignIn = () => {
             .catch(error => console.error(error))
     }
 
+    // sign in with email & password
+    const handleSignInSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                toast.success("Login Successfully!!!");
+                form.reset();
+            })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -32,7 +49,7 @@ const SignIn = () => {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <form>
+                        <form onSubmit={handleSignInSubmit}>
                             <div className="form-control">
                                 <label htmlFor='email' className="label">
                                     <span className="label-text">Email</span>
