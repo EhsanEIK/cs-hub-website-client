@@ -1,10 +1,16 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut().then(result => toast.success("Log out successfully."))
+            .catch(error => console.error(error));
+    }
 
     return (
         <div className="navbar bg-success text-white">
@@ -19,7 +25,7 @@ const Navbar = () => {
                     <li><Link to='/blogs'>Blog</Link></li>
                     {
                         user?.uid ?
-                            <li><Link>Sign Out</Link></li>
+                            <li onClick={handleSignOut}><Link>Sign Out</Link></li>
                             : <>
                                 <li><Link to='/signin'>Sign In</Link></li>
                                 <li><Link to='/signup'>Sign Up</Link></li>
@@ -27,20 +33,23 @@ const Navbar = () => {
                     }
                 </ul>
                 <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src={user?.photoURL} title={user?.displayName} />
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                    {
+                        user?.uid ?
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user?.photoURL} title={user?.displayName} />
+                                </div>
+                            </label>
+                            : <></>
+                    }
+                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 text-black rounded-box w-52">
                         <li>
                             <a className="justify-between">
                                 Profile
                                 <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li onClick={handleSignOut}><a>Logout</a></li>
                     </ul>
                 </div>
             </div>

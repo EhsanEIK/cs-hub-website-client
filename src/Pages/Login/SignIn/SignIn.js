@@ -17,14 +17,20 @@ const SignIn = () => {
     // google signin method
     const handleGoogleSignIn = () => {
         signInWithSocialMedia(googleProvider)
-            .then(r => { })
+            .then(r => {
+                toast.success("Login Successfully!!!");
+                navigate('/');
+            })
             .catch(error => console.error(error))
     }
 
     // google signin method
     const handleGithubSignIn = () => {
         signInWithSocialMedia(githubProvider)
-            .then(r => { })
+            .then(r => {
+                toast.success("Login Successfully!!!");
+                navigate('/');
+            })
             .catch(error => console.error(error))
     }
 
