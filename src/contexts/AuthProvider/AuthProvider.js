@@ -9,13 +9,13 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
 
     // provider for social media sign in
-    const signInwithSocialMedia = provider => {
+    const signInWithSocialMedia = provider => {
         return signInWithPopup(auth, provider);
     }
 
     const authInfo = {
         user,
-        signInwithSocialMedia,
+        signInWithSocialMedia,
     };
 
     return (

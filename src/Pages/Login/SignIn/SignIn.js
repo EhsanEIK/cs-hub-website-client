@@ -1,16 +1,25 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
-    const { signInwithSocialMedia } = useContext(AuthContext);
+    const { signInWithSocialMedia } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
+    // google signin method
     const handleGoogleSignIn = () => {
-        signInwithSocialMedia(googleProvider)
+        signInWithSocialMedia(googleProvider)
+            .then(r => { })
+            .catch(error => console.error(error))
+    }
+
+    // google signin method
+    const handleGithubSignIn = () => {
+        signInWithSocialMedia(githubProvider)
             .then(r => { })
             .catch(error => console.error(error))
     }
@@ -50,7 +59,7 @@ const SignIn = () => {
                             </button>
                         </div>
                         <div className="form-control mt-1">
-                            <button className="btn btn-dark">
+                            <button onClick={handleGithubSignIn} className="btn btn-dark">
                                 <FaGithub /> <span className='ml-2'>SignIn via Github</span>
                             </button>
                         </div>
