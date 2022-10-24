@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
+    const navigate = useNavigate();
 
     // user registration with email & password
     const handleSignUpSubmit = event => {
@@ -45,6 +46,7 @@ const SignUp = () => {
                 userProfileUpdate(fullName, photoURL);
                 emailVerification();
                 toast.success("Please check your email to verify.");
+                navigate('/login');
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));

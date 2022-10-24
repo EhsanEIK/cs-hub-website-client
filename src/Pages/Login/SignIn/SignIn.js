@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
@@ -11,6 +11,8 @@ const SignIn = () => {
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+
+    const navigate = useNavigate();
 
     // google signin method
     const handleGoogleSignIn = () => {
@@ -38,6 +40,7 @@ const SignIn = () => {
         signIn(email, password)
             .then(result => {
                 toast.success("Login Successfully!!!");
+                navigate('/');
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));
