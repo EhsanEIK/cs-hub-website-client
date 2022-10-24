@@ -1,16 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
+    const { createUser } = useContext(AuthContext);
+
+    const handleSignUpSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const fullName = form.fullName.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+        if (password !== confirm) {
+            return alert("Password does not matched with confirm password.");
+        }
+        if (password.length < 6) {
+            console.log('true')
+        }
+        if (/(?=.*[A-Z])/.test(password)) {
+            console.log('true')
+        }
+        if (/(?=.*[a-z])/.test(password)) {
+            console.log('true')
+        }
+        if (/(?=.*[0-9])/.test(password)) {
+            console.log('true')
+        }
+        if (/(?=.*[!@#$&*])/.test(password)) {
+            console.log('true')
+        }
+        createUser(email, password)
+            .then(result => { })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content">
+            <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">SignUp!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <form>
+                        <form onSubmit={handleSignUpSubmit}>
                             <div className="form-control">
                                 <label htmlFor='fullName' className="label">
                                     <span className="label-text">Full Name</span>
