@@ -11,21 +11,25 @@ const AuthProvider = ({ children }) => {
 
     // provider for social media sign in
     const signInWithSocialMedia = provider => {
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
     // create user with email & password
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // sign in with email & password
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // sign out
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 

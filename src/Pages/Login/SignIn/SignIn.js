@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
@@ -13,22 +13,26 @@ const SignIn = () => {
     const githubProvider = new GithubAuthProvider();
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
 
     // google signin method
     const handleGoogleSignIn = () => {
         signInWithSocialMedia(googleProvider)
             .then(r => {
                 toast.success("Login Successfully!!!");
+                navigate(from, { replace: true });
                 navigate('/');
             })
             .catch(error => console.error(error))
     }
 
-    // google signin method
+    // github signin method
     const handleGithubSignIn = () => {
         signInWithSocialMedia(githubProvider)
             .then(r => {
                 toast.success("Login Successfully!!!");
+                navigate(from, { replace: true });
                 navigate('/');
             })
             .catch(error => console.error(error))
@@ -46,7 +50,7 @@ const SignIn = () => {
         signIn(email, password)
             .then(result => {
                 toast.success("Login Successfully!!!");
-                navigate('/');
+                navigate(from, { replace: true });
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));
