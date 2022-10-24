@@ -46,7 +46,7 @@ const SignUp = () => {
                 userProfileUpdate(fullName, photoURL);
                 emailVerification();
                 toast.success("Please check your email to verify.");
-                navigate('/login');
+                navigate('/signin');
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));

@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../../firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -18,6 +18,11 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
+    // sign in with email & password
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
     // update user profile during registration
     const updateUserProfile = profile => {
         return updateProfile(auth.currentUser, profile);
@@ -28,10 +33,13 @@ const AuthProvider = ({ children }) => {
         return sendEmailVerification(auth.currentUser);
     }
 
-    // sign in with email & password
-    const signIn = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password);
-    }
+    // get signed in user
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+        })
+        return () => unsubscribe();
+    }, []);
 
     // variable of provider value
     const authInfo = {

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="navbar bg-success text-white">
             <div className="flex-1">
@@ -14,13 +17,19 @@ const Navbar = () => {
                     <li><Link to='/courses'>Courses</Link></li>
                     <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='/blogs'>Blog</Link></li>
-                    <li><Link to='/signin'>Sign In</Link></li>
-                    <li><Link to='/signup'>Sign Up</Link></li>
+                    {
+                        user?.uid ?
+                            <li><Link>Sign Out</Link></li>
+                            : <>
+                                <li><Link to='/signin'>Sign In</Link></li>
+                                <li><Link to='/signup'>Sign Up</Link></li>
+                            </>
+                    }
                 </ul>
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
+                            <img src={user?.photoURL} title={user?.displayName} />
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
