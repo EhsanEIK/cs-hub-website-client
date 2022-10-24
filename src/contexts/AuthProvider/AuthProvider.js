@@ -7,6 +7,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(true);
 
     // provider for social media sign in
     const signInWithSocialMedia = provider => {
@@ -42,6 +43,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false);
         })
         return () => unsubscribe();
     }, []);
@@ -49,6 +51,7 @@ const AuthProvider = ({ children }) => {
     // variable of provider value
     const authInfo = {
         user,
+        loading,
         signInWithSocialMedia,
         createUser,
         updateUserProfile,
