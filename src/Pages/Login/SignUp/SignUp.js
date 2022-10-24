@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
 
+    // user registration with email & password
     const handleSignUpSubmit = event => {
         event.preventDefault();
         setErrorMsg('');
@@ -18,6 +19,7 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
 
+        // password validation check
         if (password !== confirm) {
             return setErrorMsg("Password does not matched with confirm password.");
         }
@@ -37,21 +39,29 @@ const SignUp = () => {
             return setErrorMsg("Password should be at least one special character.");
         }
 
+        // create user with firebase
         createUser(email, password)
             .then(result => {
                 userProfileUpdate(fullName, photoURL);
+                emailVerification();
                 toast.success("User created successfully.");
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));
     }
 
+    // update user profile during registration
     const userProfileUpdate = (name, photoURL) => {
         const profile = {
             displayName: name,
             photoURL: photoURL,
         }
         updateUserProfile(profile).then(() => { }).catch(error => console.error(error));
+    }
+
+    // verify email during registration
+    const emailVerification = () => {
+        verifyEmail().then(() => { }).catch(error => console.error(error));
     }
 
     return (

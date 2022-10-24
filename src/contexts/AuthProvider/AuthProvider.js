@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import app from '../../firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -23,11 +23,17 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     }
 
+    // verify email during registration
+    const verifyEmail = () => {
+        return sendEmailVerification(auth.currentUser);
+    }
+
     const authInfo = {
         user,
         signInWithSocialMedia,
         createUser,
         updateUserProfile,
+        verifyEmail,
     };
 
     return (
