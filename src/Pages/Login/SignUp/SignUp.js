@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
 
     const handleSignUpSubmit = event => {
@@ -39,10 +39,19 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(result => {
+                userProfileUpdate(fullName, photoURL);
                 toast.success("User created successfully.");
                 form.reset();
             })
             .catch(error => setErrorMsg(error.message));
+    }
+
+    const userProfileUpdate = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL,
+        }
+        updateUserProfile(profile).then(() => { }).catch(error => console.error(error));
     }
 
     return (
