@@ -14,6 +14,8 @@ const Navbar = () => {
                     <li><Link to='/courses'>Courses</Link></li>
                     <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='/blogs'>Blog</Link></li>
+                    <li><Link to='/signin'>Sign In</Link></li>
+                    <li><Link to='/signup'>Sign Up</Link></li>
                 </ul>
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
