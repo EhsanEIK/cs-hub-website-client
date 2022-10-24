@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-success text-white">
             <div className="flex-1">
-                <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700"><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
+                <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700" to='/'><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
             </div>
             <div className="flex-none gap-2">
                 <ul className="menu menu-horizontal p-0">
