@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
     const { signIn, signInWithSocialMedia } = useContext(AuthContext);
+    const [errorMsg, setErrorMsg] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -28,6 +29,7 @@ const SignIn = () => {
     // sign in with email & password
     const handleSignInSubmit = event => {
         event.preventDefault();
+        setErrorMsg('');
 
         const form = event.target;
         const email = form.email.value;
@@ -38,7 +40,7 @@ const SignIn = () => {
                 toast.success("Login Successfully!!!");
                 form.reset();
             })
-            .catch(error => console.error(error));
+            .catch(error => setErrorMsg(error.message));
     }
 
     return (
@@ -51,6 +53,7 @@ const SignIn = () => {
                     <div className="card-body">
                         <form onSubmit={handleSignInSubmit}>
                             <div className="form-control">
+                                <p className='text-red-600 text-md text-center'>{errorMsg}</p>
                                 <label htmlFor='email' className="label">
                                     <span className="label-text">Email</span>
                                 </label>

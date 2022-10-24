@@ -74,7 +74,7 @@ const SignUp = () => {
                     <div className="card-body">
                         <form onSubmit={handleSignUpSubmit}>
                             <div className="form-control">
-                                <p className='text-red-600 text-sm'>{errorMsg}</p>
+                                <p className='text-red-600 text-sm text-center'>{errorMsg}</p>
                                 <label htmlFor='fullName' className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
