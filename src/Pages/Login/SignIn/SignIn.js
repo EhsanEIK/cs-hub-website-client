@@ -22,7 +22,6 @@ const SignIn = () => {
             .then(r => {
                 toast.success("Login Successfully!!!");
                 navigate(from, { replace: true });
-                navigate('/');
             })
             .catch(error => console.error(error))
     }
@@ -33,7 +32,6 @@ const SignIn = () => {
             .then(r => {
                 toast.success("Login Successfully!!!");
                 navigate(from, { replace: true });
-                navigate('/');
             })
             .catch(error => console.error(error))
     }
