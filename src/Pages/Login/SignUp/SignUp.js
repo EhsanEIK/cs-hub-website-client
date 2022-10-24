@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleSignUpSubmit = event => {
         event.preventDefault();
+        setErrorMsg('');
 
         const form = event.target;
         const fullName = form.fullName.value;
@@ -16,26 +18,27 @@ const SignUp = () => {
         const confirm = form.confirm.value;
 
         if (password !== confirm) {
-            return alert("Password does not matched with confirm password.");
+            return setErrorMsg("Password does not matched with confirm password.");
         }
         if (password.length < 6) {
-            console.log('true')
+            return setErrorMsg("Password should be at least 6 character.");
         }
-        if (/(?=.*[A-Z])/.test(password)) {
-            console.log('true')
+        if (!/(?=.*[A-Z])/.test(password)) {
+            return setErrorMsg("Password should be at least one upper case letter.");
         }
-        if (/(?=.*[a-z])/.test(password)) {
-            console.log('true')
+        if (!/(?=.*[a-z])/.test(password)) {
+            return setErrorMsg("Password should be at least one lower case letter.");
         }
-        if (/(?=.*[0-9])/.test(password)) {
-            console.log('true')
+        if (!/(?=.*[0-9])/.test(password)) {
+            return setErrorMsg("Password should be at least one numerical digit.");
         }
-        if (/(?=.*[!@#$&*])/.test(password)) {
-            console.log('true')
+        if (!/(?=.*[!@#$&*])/.test(password)) {
+            return setErrorMsg("Password should be at least one special character.");
         }
+
         createUser(email, password)
             .then(result => { })
-            .catch(error => console.error(error));
+            .catch(error => setErrorMsg(error.message));
     }
 
     return (
@@ -48,6 +51,7 @@ const SignUp = () => {
                     <div className="card-body">
                         <form onSubmit={handleSignUpSubmit}>
                             <div className="form-control">
+                                <p className='text-red-600 text-sm'>{errorMsg}</p>
                                 <label htmlFor='fullName' className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
