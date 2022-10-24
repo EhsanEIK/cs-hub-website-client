@@ -1,11 +1,22 @@
 import React, { createContext, useState } from 'react';
+import app from '../../firebase/firebase.config';
+import { getAuth, signInWithPopup } from 'firebase/auth';
 
 export const AuthContext = createContext();
+const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
 
-    const authInfo = { user };
+    // provider for social media sign in
+    const signInwithSocialMedia = provider => {
+        return signInWithPopup(auth, provider);
+    }
+
+    const authInfo = {
+        user,
+        signInwithSocialMedia,
+    };
 
     return (
         <AuthContext.Provider value={authInfo}>

@@ -1,8 +1,20 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignIn = () => {
+    const { signInwithSocialMedia } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        signInwithSocialMedia(googleProvider)
+            .then(r => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -33,7 +45,7 @@ const SignIn = () => {
                             </div>
                         </form>
                         <div className="form-control mt-1">
-                            <button className="btn btn-warning">
+                            <button onClick={handleGoogleSignIn} className="btn btn-warning">
                                 <FaGoogle /> <span className='ml-2'>SignIn via Google</span>
                             </button>
                         </div>
