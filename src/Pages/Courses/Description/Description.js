@@ -16,7 +16,7 @@ const Description = () => {
                 <div className="card-header flex justify-between items-center p-5">
                     <h2 className="card-title">{title}</h2>
                     <Pdf targetRef={pdfRef} filename={`${title}.pdf`}>
-                        {({ toPdf }) => <FaFileDownload onClick={toPdf} className='w-8 h-8 cursor-pointer text-amber-500 hover:text-amber-600' />}
+                        {({ toPdf }) => <FaFileDownload onClick={toPdf} className='w-8 h-8 cursor-pointer text-red-600 hover:text-red-700' />}
                     </Pdf>
                 </div>
                 <figure><img src={image} alt={title} className="w-full md:h-96 h-auto" /></figure>
