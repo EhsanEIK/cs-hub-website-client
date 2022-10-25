@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
 
     const handleSignOut = () => {
         logOut().then(result => toast.success("Log out successfully."))
@@ -13,11 +15,16 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-success text-white">
+        <div className={`navbar bg-success text-white ${open ? 'pb-28' : 'pb-4'}`}>
             <div className="flex-1">
                 <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700" to='/'><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
             </div>
-            <div className="flex-none gap-2">
+            <div className='md:hidden mr-3' onClick={() => setOpen(!open)}>
+                {
+                    open ? <FaTimes className='w-5 h-10' /> : <FaBars className=' w-5 h-10' />
+                }
+            </div>
+            <div className={`flex-none flex-wrap gap-2 md:static absolute duration-500 ease-in-out ${open ? 'top-14' : '-top-96'}`}>
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/courses'>Courses</Link></li>
@@ -53,7 +60,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
