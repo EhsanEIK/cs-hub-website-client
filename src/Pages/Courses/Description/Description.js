@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFileDownload } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Description = () => {
     const course = useLoaderData();
@@ -25,7 +25,9 @@ const Description = () => {
                             </div>
                         </div>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-outline btn-primary">Get Premium Access</button>
+                            <Link to={'/checkout'}>
+                                <button className="btn btn-outline btn-primary">Get Premium Access</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
