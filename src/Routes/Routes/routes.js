@@ -1,3 +1,4 @@
+import CourseLayout from "../../layouts/CourseLayout";
 import Main from "../../layouts/Main";
 import Courses from "../../Pages/Courses/Courses/Courses";
 import Home from "../../Pages/Home/Home/Home";
@@ -13,7 +14,16 @@ export const router = createBrowserRouter([
         element: <Main></Main>,
         children: [
             { path: '/', element: <Home></Home> },
-            { path: '/courses', element: <PrivateRoute><Courses></Courses></PrivateRoute> },
+            {
+                path: '/courses',
+                element: <PrivateRoute><CourseLayout></CourseLayout></PrivateRoute>,
+                children: [
+                    {
+                        path: '/courses',
+                        element: <Courses></Courses>,
+                    }
+                ]
+            },
             { path: '/signin', element: <SignIn></SignIn> },
             { path: '/signup', element: <SignUp></SignUp> },
         ]
