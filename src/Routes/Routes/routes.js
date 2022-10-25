@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/courses',
+                        loader: () => fetch('https://cs-hub-server.vercel.app/courses'),
                         element: <Courses></Courses>,
                     }
                 ]
