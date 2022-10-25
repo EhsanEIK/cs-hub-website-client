@@ -4,9 +4,12 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const { dark, setDark } = useContext(DarkModeContext);
+
     const [open, setOpen] = useState(false);
 
     const handleSignOut = () => {
@@ -15,13 +18,19 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar bg-success text-white ${open ? 'pb-28' : 'pb-4'}`}>
+        <div className={`navbar bg-success text-white ${open ? 'pb-28' : 'pb-4'} ${dark ? 'bg-slate-800 shadow-2xl border-b-2 border-red-500' : 'bg-success'}`}>
             <div className="flex-1">
                 <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700" to='/'><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
             </div>
             <div className='md:hidden mr-3' onClick={() => setOpen(!open)}>
                 {
                     open ? <FaTimes className='w-5 h-10' /> : <FaBars className=' w-5 h-10' />
+                }
+            </div>
+            <div onClick={() => setDark(!dark)}>
+                {
+                    dark ? <button className='bg-white text-black rounded-lg px-3 py-1 hover:bg-slate-300 m-0'>Light</button>
+                        : <button className='bg-gray-500 text-white rounded-lg px-3 py-1 hover:bg-gray-600 m-0'>Dark</button>
                 }
             </div>
             <div className={`flex-none flex-wrap gap-2 md:w-auto w-96 md:static absolute duration-500 ease-in-out ${open ? 'top-14' : '-top-96'}`}>

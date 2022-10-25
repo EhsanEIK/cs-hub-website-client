@@ -4,8 +4,10 @@ import toast from 'react-hot-toast';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
 
 const SignIn = () => {
+    const { dark } = useContext(DarkModeContext);
     const { signIn, signInWithSocialMedia } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
 
@@ -55,7 +57,7 @@ const SignIn = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className={`hero min-h-screen ${dark ? 'bg-slate-800 text-gray-500' : 'bg-base-200'}`}>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">SignIn!</h1>

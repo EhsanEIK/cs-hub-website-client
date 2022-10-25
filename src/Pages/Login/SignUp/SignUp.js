@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
 
 const SignUp = () => {
+    const { dark } = useContext(DarkModeContext);
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
     const navigate = useNavigate();
@@ -67,7 +69,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className={`hero min-h-screen ${dark ? 'bg-slate-800 text-gray-500' : 'bg-base-200'}`}>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">SignUp!</h1>
