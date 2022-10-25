@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
@@ -27,10 +27,9 @@ const Navbar = () => {
                     open ? <FaTimes className='w-5 h-10' /> : <FaBars className=' w-5 h-10' />
                 }
             </div>
-            <div onClick={() => setDark(!dark)}>
+            <div onClick={() => setDark(!dark)} className='cursor-pointer mr-3 hover:text-rose-600'>
                 {
-                    dark ? <button className='bg-white text-black rounded-lg px-3 py-1 hover:bg-slate-300 m-0'>Light</button>
-                        : <button className='bg-gray-500 text-white rounded-lg px-3 py-1 hover:bg-gray-600 m-0'>Dark</button>
+                    dark ? <FaSun /> : <FaMoon />
                 }
             </div>
             <div className={`flex-none flex-wrap gap-2 md:w-auto w-96 md:static absolute duration-500 ease-in-out ${open ? 'top-14' : '-top-96'}`}>
