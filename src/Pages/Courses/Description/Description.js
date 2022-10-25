@@ -25,7 +25,7 @@ const Description = () => {
                             </div>
                         </div>
                         <div className="card-actions justify-end">
-                            <Link to={'/checkout'}>
+                            <Link to={`/checkout/${id}`}>
                                 <button className="btn btn-outline btn-primary">Get Premium Access</button>
                             </Link>
                         </div>

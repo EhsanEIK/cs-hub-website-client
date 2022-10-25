@@ -33,7 +33,8 @@ export const router = createBrowserRouter([
                 ]
             },
             {
-                path: '/checkout',
+                path: '/checkout/:id',
+                loader: ({ params }) => fetch(`https://cs-hub-server.vercel.app/courses/${params.id}`),
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             { path: '/signin', element: <SignIn></SignIn> },
