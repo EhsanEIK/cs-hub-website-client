@@ -13,7 +13,7 @@ const Checkout = () => {
     return (
         <div>
             <h1 className='text-3xl text-center my-10'>Checkout for <span className='font-bold'>{title}</span> course</h1>
-            <div className='container mx-auto w-96'>
+            <div className='container md:mx-auto mx-3 md:w-96 w-auto'>
                 <div className="bg-base-100 rounded-xl shadow-2xl p-10">
                     <div>
                         <p className='text-lg font-bold mb-2'>
