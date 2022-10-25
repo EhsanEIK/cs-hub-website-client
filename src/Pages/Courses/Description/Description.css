@@ -1,5 +1,11 @@
 .descripiton-card {
-    width: 100%;
+    width: 750px;
+}
+
+@media screen and (max-width:688px) {
+    .descripiton-card {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width:689px) and (max-width:992px) {
