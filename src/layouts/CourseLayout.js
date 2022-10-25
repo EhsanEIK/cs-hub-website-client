@@ -4,11 +4,11 @@ import LeftSideNav from '../Pages/Courses/LeftSideNav/LeftSideNav';
 
 const CourseLayout = () => {
     return (
-        <div className='grid grid-cols-6'>
-            <div className="col-span-2">
+        <div className='grid grid-cols-6 gap-80'>
+            <div>
                 <LeftSideNav></LeftSideNav>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-4 mt-6">
                 <Outlet></Outlet>
             </div>
         </div>
