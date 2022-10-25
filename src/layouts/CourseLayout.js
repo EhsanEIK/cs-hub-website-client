@@ -1,13 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import LeftSideNav from '../Pages/Courses/LeftSideNav/LeftSideNav';
 
 const CourseLayout = () => {
     return (
-        <div className='grid grid-cols-7'>
-            <div className='col-span-2'>
-                <h1>course list</h1>
+        <div className='grid grid-cols-6'>
+            <div className="col-span-2">
+                <LeftSideNav></LeftSideNav>
             </div>
-            <div className='col-span-5'>
-                <h1>Container</h1>
+            <div className="col-span-4">
+                <Outlet></Outlet>
             </div>
         </div>
     );
