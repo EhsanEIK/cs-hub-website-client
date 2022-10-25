@@ -7,7 +7,7 @@ const Courses = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-3 gap-5'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 lg:mx-0 mx-3 gap-5'>
                 {
                     courses.map(course => <Course
                         key={course.id}

@@ -4,7 +4,7 @@ const Course = ({ course }) => {
     const { title, image, duration, price } = course;
 
     return (
-        <div className="card w-auto h-48 bg-base-100 shadow-xl image-full">
+        <div className="card lg:w-auto md:w-96 h-48 bg-base-100 shadow-xl image-full">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold">{title}</h2>
