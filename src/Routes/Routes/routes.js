@@ -3,6 +3,7 @@ import Main from "../../layouts/Main";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/Courses/Courses";
 import Description from "../../Pages/Courses/Description/Description";
+import Error from "../../Pages/Error/Error";
 import Home from "../../Pages/Home/Home/Home";
 import SignIn from "../../Pages/Login/SignIn/SignIn";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
@@ -13,6 +14,7 @@ const { createBrowserRouter } = require("react-router-dom");
 export const router = createBrowserRouter([
     {
         path: '/',
+        errorElement: <Error></Error>,
         element: <Main></Main>,
         children: [
             { path: '/', element: <Home></Home> },
