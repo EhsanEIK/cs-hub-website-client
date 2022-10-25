@@ -1,5 +1,6 @@
 import CourseLayout from "../../layouts/CourseLayout";
 import Main from "../../layouts/Main";
+import Blogs from "../../Pages/Blogs/Blogs/Blogs";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/Courses/Courses";
 import Description from "../../Pages/Courses/Description/Description";
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://cs-hub-server.vercel.app/courses/${params.id}`),
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
+            { path: '/blogs', element: <Blogs></Blogs> },
             { path: '/signin', element: <SignIn></SignIn> },
             { path: '/signup', element: <SignUp></SignUp> },
         ]
