@@ -1,19 +1,20 @@
 import React from 'react';
 import { FaFileDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import './Description.css';
 
 const Description = () => {
     const course = useLoaderData();
     const { id, image, title, description, price, duration } = course;
 
     return (
-        <div>
-            <div className="card card-compact w-full bg-slate-200 shadow-xl">
+        <div className='md:mx-0 mx-3'>
+            <div className="card card-compact descripiton-card bg-slate-200 shadow-xl">
                 <div className="card-header flex justify-between items-center p-5">
                     <h2 className="card-title">{title}</h2>
                     <FaFileDownload className='w-8 h-8 cursor-pointer text-amber-500 hover:text-amber-600' />
                 </div>
-                <figure><img src={image} alt={title} className="w-full h-96" /></figure>
+                <figure><img src={image} alt={title} className="w-full md:h-96 h-auto" /></figure>
                 <div className="card-body">
                     <p className='px-5'>{description}</p>
                     <div className='flex justify-between items-center px-5'>

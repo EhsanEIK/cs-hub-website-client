@@ -8,7 +8,7 @@ const CourseLayout = () => {
             <div>
                 <LeftSideNav></LeftSideNav>
             </div>
-            <div className="md:col-span-4 mt-6 mb-10">
+            <div className="lg:col-span-4 mt-6 mb-10">
                 <Outlet></Outlet>
             </div>
         </div>
