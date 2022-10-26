@@ -1,0 +1,10 @@
+.faq-container {
+    width: 500px;
+}
+
+@media screen and (max-width:688px) {
+    .faq-container {
+        width: auto;
+        margin: 0 10px;
+    }
+}
