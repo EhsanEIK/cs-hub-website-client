@@ -29,7 +29,7 @@ const Navbar = () => {
             </div>
             <div onClick={() => setDark(!dark)} className='cursor-pointer mr-3 hover:text-rose-600'>
                 {
-                    dark ? <FaSun /> : <FaMoon />
+                    dark ? <FaSun title='Light Mode' /> : <FaMoon title='Dark Mode' />
                 }
             </div>
             <div className={`flex-none flex-wrap gap-2 md:w-auto w-96 md:static absolute duration-500 ease-in-out ${open ? 'top-14' : '-top-96'}`}>
@@ -52,7 +52,7 @@ const Navbar = () => {
                         user?.uid ?
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img src={user?.photoURL} title={user?.displayName} />
+                                    <img src={user?.photoURL} title={user?.displayName} alt={user?.displayName} />
                                 </div>
                             </label>
                             : <></>
