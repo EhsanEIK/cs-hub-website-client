@@ -8,8 +8,9 @@ import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProv
 
 const SignIn = () => {
     const { dark } = useContext(DarkModeContext);
-    const { signIn, signInWithSocialMedia } = useContext(AuthContext);
+    const { signIn, signInWithSocialMedia, passwordResetEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -56,6 +57,23 @@ const SignIn = () => {
             .catch(error => setErrorMsg(error.message));
     }
 
+    // set user email by onBlur
+    const setUserEmailByOnblur = event => {
+        setUserEmail(event.target.value)
+    }
+
+    // password reset email
+    const handlePasswordResetEmail = () => {
+        passwordResetEmail(userEmail)
+            .then(result => {
+                if (!userEmail) {
+                    return alert('Please enter your email.');
+                }
+                toast.success('Please check your email to reset password.');
+            })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className={`hero min-h-screen ${dark ? 'bg-slate-800 text-gray-500' : 'bg-base-200'}`}>
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -70,16 +88,16 @@ const SignIn = () => {
                                 <label htmlFor='email' className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" id='email' name='email' placeholder="enter your email" className="input input-bordered" required />
+                                <input onBlur={setUserEmailByOnblur} type="email" id='email' name='email' placeholder="enter your email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label htmlFor='password' className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" id='password' name='password' placeholder="enter your password" className="input input-bordered" required />
+                                <input type="password" id='password' name='password' placeholder="enter your password" className="input input-bordered" />
                                 <label className="label">
                                     <span className='text-xs'>Don't have an account? <Link className='text-amber-700 link link-hover' to='/signup'>Sign Up</Link></span>
-                                    <a href="1" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <button onClick={handlePasswordResetEmail} type='submit' className="label-text-alt link link-hover">Reset password?</button>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
