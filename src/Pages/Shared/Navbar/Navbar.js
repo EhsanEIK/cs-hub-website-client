@@ -38,6 +38,7 @@ const Navbar = () => {
                     <li><Link to='/courses'>Courses</Link></li>
                     <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='/blogs'>Blog</Link></li>
+                    <li><Link to='/contact'>Contact</Link></li>
                     {
                         user?.uid ?
                             <li onClick={handleSignOut}><Link>Sign Out</Link></li>

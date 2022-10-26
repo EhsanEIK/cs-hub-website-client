@@ -2,6 +2,7 @@ import CourseLayout from "../../layouts/CourseLayout";
 import Main from "../../layouts/Main";
 import Blogs from "../../Pages/Blogs/Blogs/Blogs";
 import Checkout from "../../Pages/Checkout/Checkout";
+import Contact from "../../Pages/Contact/Contact";
 import Courses from "../../Pages/Courses/Courses/Courses";
 import Description from "../../Pages/Courses/Description/Description";
 import Error from "../../Pages/Error/Error";
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             { path: '/blogs', element: <Blogs></Blogs> },
+            { path: '/contact', element: <Contact></Contact> },
             { path: '/signin', element: <SignIn></SignIn> },
             { path: '/signup', element: <SignUp></SignUp> },
         ]
