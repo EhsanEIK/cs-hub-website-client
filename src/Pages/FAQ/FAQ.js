@@ -3,7 +3,7 @@ import './FAQ.css';
 
 const FAQ = () => {
     return (
-        <div className='faq-container mx-auto mt-10'>
+        <div className='faq-container mx-auto mt-12'>
             <div>
                 <h1 className='md:text-4xl text-3xl text-center'>Frequenty Asked Questions</h1>
                 <div className='divider mt-2 mb-5'></div>

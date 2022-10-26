@@ -18,10 +18,10 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar bg-success text-white ${open ? 'pb-28' : 'pb-4'} ${dark ? 'bg-slate-800 shadow-2xl border-b-2 border-red-500' : 'bg-success'}`}>
-            <div className="flex-1">
+        <div className={`navbar bg-success text-white md:pb-0 ${open ? 'pb-40' : 'pb-4'} ${dark ? 'bg - slate - 800 shadow - 2xl border - b - 2 border - red - 500' : 'bg - success'}`}>
+            < div className="flex-1" >
                 <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700" to='/'><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
-            </div>
+            </div >
             <div className='md:hidden mr-3' onClick={() => setOpen(!open)}>
                 {
                     open ? <FaTimes className='w-5 h-10' /> : <FaBars className=' w-5 h-10' />
@@ -69,7 +69,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
