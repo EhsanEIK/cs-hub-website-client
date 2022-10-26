@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className={`navbar bg-success text-white md:pb-0 ${open ? 'pb-40' : 'pb-4'} ${dark ? 'bg - slate - 800 shadow - 2xl border - b - 2 border - red - 500' : 'bg - success'}`}>
+        <div className={`navbar bg-success text-white md:pb-4 ${open ? 'pb-40' : 'pb-4'} ${dark ? 'bg-slate-800 shadow-2xl border-b-2 border-red-500' : 'bg-success'}`}>
             < div className="flex-1" >
                 <Link className="btn btn-ghost normal-case text-4xl font-bold text-red-700" to='/'><img className='w-12 h-auto' src={logo} alt="logo" /> CS~HUB</Link>
             </div >
@@ -69,7 +69,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

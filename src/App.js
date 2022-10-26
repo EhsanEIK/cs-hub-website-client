@@ -9,7 +9,7 @@ function App() {
   const { dark } = useContext(DarkModeContext);
 
   return (
-    <div className={`${dark ? 'bg-slate-800 text-gray-500 md:pb-28 pb-80' : ''}`}>
+    <div className={`${dark ? 'bg-slate-800 text-gray-500' : ''}`}>
       <RouterProvider router={router}></RouterProvider>
       <Toaster />
     </div>
