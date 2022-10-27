@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
+import { addToDb, getDataFromDb } from '../../../utilities/db';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -12,10 +13,28 @@ const Navbar = () => {
 
     const [open, setOpen] = useState(false);
 
+    // sign out handler
     const handleSignOut = () => {
         logOut().then(result => toast.success("Log out successfully."))
             .catch(error => console.error(error));
     }
+
+    // handler dark mode control
+    const handleDarkModeControl = () => {
+        const currentDarkMode = !dark;
+        setDark(currentDarkMode);
+
+        // set the dark mode in database
+        addToDb(currentDarkMode);
+    }
+
+    // get the current mode from database
+    useEffect(() => {
+        const getData = getDataFromDb();
+        if (getData) {
+            setDark(getData);
+        }
+    }, [])
 
     return (
         <div className={`navbar bg-success text-white md:pb-4 ${open ? 'pb-40' : 'pb-4'} ${dark ? 'bg-slate-800 shadow-2xl border-b-2 border-red-500' : 'bg-success'}`}>
@@ -27,7 +46,7 @@ const Navbar = () => {
                     open ? <FaTimes className='w-5 h-10' /> : <FaBars className=' w-5 h-10' />
                 }
             </div>
-            <div onClick={() => setDark(!dark)} className='cursor-pointer mr-3 hover:text-rose-600'>
+            <div onClick={handleDarkModeControl} className='cursor-pointer mr-3 hover:text-rose-600'>
                 {
                     dark ? <FaSun title='Light Mode' /> : <FaMoon title='Dark Mode' />
                 }

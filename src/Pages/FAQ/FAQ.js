@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../../contexts/DarkModeProvider/DarkModeProvider';
 import './FAQ.css';
 
 const FAQ = () => {
+    const { dark } = useContext(DarkModeContext);
+
     return (
         <div className='faq-container mx-auto mt-12'>
             <div>
-                <h1 className='md:text-4xl text-3xl text-center'>Frequenty Asked Questions</h1>
+                <h1 className={`md:text-4xl text-3xl text-center ${dark ? 'text-white' : ''}`}>Frequenty Asked Questions</h1>
                 <div className='divider mt-2 mb-5'></div>
                 <div className='bg-slate-200 rounded-lg p-5 mt-5'>
                     <p className='text-xl font-bold mb-2'>1. Is this course are authentic?</p>
