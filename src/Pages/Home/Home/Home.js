@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import About from '../About/About';
 import Instructors from '../Instructors/Instructors';
 import Statistics from '../Statistics/Statistics';
