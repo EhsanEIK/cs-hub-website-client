@@ -6,8 +6,8 @@ const About = () => {
 
     return (
         <div className='md:mx-0 mx-3'>
-            <div className={`hero rounded-lg mt-28 ${dark ? 'bg-gray-600 text-white' : 'bg-base-200'}`}>
-                <div className="hero-content flex-col lg:flex-row-reverse p-10">
+            <div className={`hero rounded-lg md:mt-40 mt-36 ${dark ? 'bg-gray-600 text-white' : 'bg-base-200'}`}>
+                <div className="hero-content flex-col-reverse lg:flex-row-reverse p-10">
                     <img src="https://www.purdueglobal.edu/blog/it/what-can-you-do-with-masters-in-it.jpg" className="w-auto rounded-lg shadow-2xl" alt='img' />
                     <div>
                         <h1 className="md:text-5xl text-4xl font-bold">About Us</h1>

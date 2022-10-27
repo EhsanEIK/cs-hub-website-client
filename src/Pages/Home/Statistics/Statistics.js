@@ -5,7 +5,7 @@ const Statistics = () => {
     const { dark } = useContext(DarkModeContext);
 
     return (
-        <div className={`text-center mt-28 md:mx-0 mx-3 ${dark ? 'text-white' : ''}`}>
+        <div className={`text-center mt-40 md:mx-0 mx-3 ${dark ? 'text-white' : ''}`}>
             <h1 className='text-5xl font-bold'>Our Statistics</h1>
             <div className='divider mt-2 mb-10'></div>
             <div className={`md:flex block text-2xl rounded-xl shadow w-full h-full ${dark ? 'bg-gray-600 text-white' : ''}`}>
