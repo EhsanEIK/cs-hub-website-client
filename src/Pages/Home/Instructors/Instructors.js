@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
 
 const Instructors = () => {
+    const { dark } = useContext(DarkModeContext);
+
     return (
         <div className='mt-40 md:mx-0 mx-3'>
-            < h1 className='text-5xl text-center font-bold' > Our Instructors</h1 >
+            < h1 className={`text-5xl text-center font-bold ${dark ? 'text-white' : ''}`} > Our Instructors</h1 >
             <div className='divider mt-2 mb-10'></div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
-                <div className='flex items-center bg-slate-300 border-2 rounded-xl p-5'>
+                <div className={`flex items-center border-2 rounded-xl p-5 ${dark ? 'bg-gray-600 text-white border-0' : 'bg-slate-300'}`}>
                     <div className="avatar">
                         <div className="w-28 h-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://thumbs.dreamstime.com/b/smart-person-eyewear-man-official-clothes-stands-against-white-background-studio-165962936.jpg" alt='img' />
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt='img' />
                         </div>
                     </div>
                     <div className='ml-5'>
@@ -18,7 +21,7 @@ const Instructors = () => {
                         <p>CS Hub</p>
                     </div>
                 </div>
-                <div className='flex items-center bg-slate-300 border-2 rounded-xl p-5'>
+                <div className={`flex items-center border-2 rounded-xl p-5 ${dark ? 'bg-gray-600 text-white border-0' : 'bg-slate-300'}`}>
                     <div className="avatar">
                         <div className="w-28 h-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src="https://t4.ftcdn.net/jpg/03/30/25/97/360_F_330259751_tGPEAq5F5bjxkkliGrb97X2HhtXBDc9x.jpg" alt='img' />
@@ -30,7 +33,7 @@ const Instructors = () => {
                         <p>CS Hub</p>
                     </div>
                 </div>
-                <div className='flex items-center bg-slate-300 border-2 rounded-xl p-5'>
+                <div className={`flex items-center border-2 rounded-xl p-5 ${dark ? 'bg-gray-600 text-white border-0' : 'bg-slate-300'}`}>
                     <div className="avatar">
                         <div className="w-28 h-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src="https://st.depositphotos.com/2309453/3449/i/600/depositphotos_34490345-stock-photo-confident-casual-unshaven-young-man.jpg" alt='img' />
@@ -42,7 +45,7 @@ const Instructors = () => {
                         <p>CS Hub</p>
                     </div>
                 </div>
-                <div className='flex items-center bg-slate-300 border-2 rounded-xl p-5'>
+                <div className={`flex items-center border-2 rounded-xl p-5 ${dark ? 'bg-gray-600 text-white border-0' : 'bg-slate-300'}`}>
                     <div className="avatar">
                         <div className="w-28 h-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src="https://media.istockphoto.com/photos/young-handsome-man-with-beard-wearing-casual-sweater-standing-over-picture-id1212702108?k=20&m=1212702108&s=612x612&w=0&h=ZI4gKJi2d1dfi74yTljf4YhulA1nfhD3dcUFGH-NUkY=" alt='img' />
