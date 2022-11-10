@@ -1,6 +1,10 @@
 import React from 'react';
+import useTitle from '../../../hooks/useTitle';
 
 const Blogs = () => {
+    // custome title in the website
+    useTitle('Blogs');
+
     return (
         <div>
             {/* blog-01 */}

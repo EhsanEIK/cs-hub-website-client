@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
 import { FaMapMarkerAlt, FaPaperPlane, FaPhoneAlt } from 'react-icons/fa';
 import { DarkModeContext } from '../../contexts/DarkModeProvider/DarkModeProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Contact = () => {
+    // custome title in the website
+    useTitle('Contact Us');
+
     const { dark } = useContext(DarkModeContext);
 
     return (

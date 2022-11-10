@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
 import { DarkModeContext } from '../../contexts/DarkModeProvider/DarkModeProvider';
+import useTitle from '../../hooks/useTitle';
 import './FAQ.css';
 
 const FAQ = () => {
+    // custome title in the website
+    useTitle('FAQ');
+
     const { dark } = useContext(DarkModeContext);
 
     return (

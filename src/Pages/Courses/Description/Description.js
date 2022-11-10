@@ -2,11 +2,15 @@ import React, { useRef } from 'react';
 import { FaFileDownload } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from "react-to-pdf";
+import useTitle from '../../../hooks/useTitle';
 import './Description.css';
 
 const Description = () => {
     const course = useLoaderData();
     const { id, image, title, description, price, duration } = course;
+
+    // custome title in the website
+    useTitle(`${title} Course`);
 
     const pdfRef = useRef();
 

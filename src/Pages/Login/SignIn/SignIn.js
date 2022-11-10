@@ -5,8 +5,12 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const SignIn = () => {
+    // custome title in the website
+    useTitle('Sign In');
+
     const { dark } = useContext(DarkModeContext);
     const { signIn, signInWithSocialMedia, passwordResetEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');

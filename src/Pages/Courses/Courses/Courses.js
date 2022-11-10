@@ -1,8 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import Course from '../Course/Course';
 
 const Courses = () => {
+    // custome title in the website
+    useTitle('All Courses');
+
     const courses = useLoaderData();
 
     return (

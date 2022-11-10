@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Checkout = () => {
+    // custome title in the website
+    useTitle('Checkout');
+
     const { user } = useContext(AuthContext);
     const course = useLoaderData();
     const { title, price } = course;

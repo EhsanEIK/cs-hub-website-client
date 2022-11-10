@@ -3,8 +3,12 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { DarkModeContext } from '../../../contexts/DarkModeProvider/DarkModeProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const SignUp = () => {
+    // custome title in the website
+    useTitle('Sign Up');
+
     const { dark } = useContext(DarkModeContext);
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
